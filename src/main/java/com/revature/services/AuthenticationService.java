@@ -19,13 +19,13 @@ public class AuthenticationService {
 		super();
 		this.doomDB = doomDB;
 	}
+	
 	// sign-in
 	public User signIn(LoginRequest form) {
 		//User myUser = new User(form.getEmail(), form.getPassword());
 		User myUser = this.doomDB.findByEmail(form.getEmail());
 		return myUser;
 	}
-
 
 	// sign-up
 	public Boolean signUp(User user) {

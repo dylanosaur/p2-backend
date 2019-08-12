@@ -33,13 +33,13 @@ public class CartController {
 	} 
 	
 	
-	// add item to cart
-	@PostMapping(path="{userid}")
-	public List<Item> addItemToCart(@PathVariable int userid, @RequestBody Item item) {
-		List<Item> cart = service.findByUser(userid);
-		return cart;
-	}
-	
+//	// add item to cart
+//	@PostMapping(path="{userid}")
+//	public List<Item> addItemToCart(@PathVariable int userid, @RequestBody Item item) {
+//		List<Item> cart = service.findByUser(userid);
+//		return cart;
+//	}
+//	
 	
 	// remove item from cart
 	

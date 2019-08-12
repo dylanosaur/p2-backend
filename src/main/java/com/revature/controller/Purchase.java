@@ -43,19 +43,19 @@ public class Purchase {
 		this.purchaseService = purchaseService;
 	}
 
-	// get all items in cart
-	@GetMapping(path = "/cart/{id}", produces = "application/json")
-	public String getCart(@PathVariable int id) {
-		String myString = "Hello " + id;
-		return myString;
-	}
-	
-	// add item to cart
-	@PostMapping(path="/cart/{id}")
-	public void addItem(@PathVariable int id, Item item) {
-		purchaseService.addItem(item);
-		
-	}
+//	// get all items in cart
+//	@GetMapping(path = "/cart/{id}", produces = "application/json")
+//	public String getCart(@PathVariable int id) {
+//		String myString = "Hello " + id;
+//		return myString;
+//	}
+//	
+//	// add item to cart
+//	@PostMapping(path="/cart/{id}")
+//	public void addItem(@PathVariable int id, Item item) {
+//		purchaseService.addItem(item);
+//		
+//	}
 	
 	
 

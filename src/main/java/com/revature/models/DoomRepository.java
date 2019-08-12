@@ -26,9 +26,9 @@ public interface DoomRepository extends JpaRepository<User, Integer> {
 	User findByEmail(String email);
 
 	Optional<User> findById(int id);
-
-	@Query("FROM items i where i.user.id = :userid")
-	List<Item> findAllByUser(@Param("userid") int userid);
+//
+//	@Query("FROM items i where i.user.id = :userid")
+//	List<Item> findAllByUser(@Param("userid") int userid);
 
 	// public List<User> findAllByWinner(String winner);
 }
