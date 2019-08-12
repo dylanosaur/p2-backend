@@ -1,8 +1,11 @@
 package com.revature.models;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /*
@@ -16,7 +19,16 @@ import org.springframework.stereotype.Repository;
  * 			full support of JPA features
  */
 @Repository
-public interface DoomRepository extends JpaRepository<User, Integer>{
+public interface DoomRepository extends JpaRepository<User, Integer> {
 
-	//public List<User> findAllByWinner(String winner);
+	void save(Item item);
+
+	User findByEmail(String email);
+
+	Optional<User> findById(int id);
+
+	@Query("FROM items i where i.user.id = :userid")
+	List<Item> findAllByUser(@Param("userid") int userid);
+
+	// public List<User> findAllByWinner(String winner);
 }

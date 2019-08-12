@@ -177,6 +177,12 @@ public class User {
 		this.name = name;
 		this.cart = cart;
 	}
+	
+	public User(String email, String password) { 
+		super();
+		this.email = email;
+		this.password = password;
+	}
 
 	public User() {
 		super();

@@ -6,13 +6,13 @@ public class LoginRequest {
 	// the body will contain the payload
 	// that body will be decrypted into this LoginRequest
 	
-	private String username;
+	private String email;
 	private String password;
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
@@ -24,8 +24,8 @@ public class LoginRequest {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 	@Override
@@ -37,25 +37,25 @@ public class LoginRequest {
 		if (getClass() != obj.getClass())
 			return false;
 		LoginRequest other = (LoginRequest) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "LoginRequest [username=" + username + ", password=" + password + "]";
+		return "LoginRequest [email=" + email + ", password=" + password + "]";
 	}
-	public LoginRequest(String username, String password) {
+	public LoginRequest(String email, String password) {
 		super();
-		this.username = username;
+		this.email = email;
 		this.password = password;
 	}
 	public LoginRequest() {

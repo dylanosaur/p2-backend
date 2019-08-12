@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.revature.models.Item;
 import com.revature.services.PurchaseService;
 
 @RestController
@@ -44,14 +45,17 @@ public class Purchase {
 
 	// get all items in cart
 	@GetMapping(path = "/cart/{id}", produces = "application/json")
-	public String sayHello(@PathVariable int id) {
+	public String getCart(@PathVariable int id) {
 		String myString = "Hello " + id;
 		return myString;
 	}
 	
 	// add item to cart
 	@PostMapping(path="/cart/{id}")
-	
+	public void addItem(@PathVariable int id, Item item) {
+		purchaseService.addItem(item);
+		
+	}
 	
 	
 
