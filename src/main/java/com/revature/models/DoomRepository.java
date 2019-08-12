@@ -1,11 +1,9 @@
-package com.revature;
+package com.revature.models;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.revature.User;
 
 /*
  * Spring Data provies a number of helpful repository types, with this hierarchy:
