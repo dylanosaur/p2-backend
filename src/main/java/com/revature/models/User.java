@@ -31,6 +31,12 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Item> cart;
 
+	
+	public List<Item> addToCart(Item newItem) {
+		cart.add(newItem);
+		return cart;
+	}
+	
 	public int getId() {
 		return id;
 	}

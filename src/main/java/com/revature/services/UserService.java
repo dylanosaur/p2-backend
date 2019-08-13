@@ -46,4 +46,14 @@ public class UserService {
 		User myUser = doomDB.findById(id);
 		return myUser;
 	}
+
+
+	public void save(User user) {
+		doomDB.save(user);
+		return;
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }
