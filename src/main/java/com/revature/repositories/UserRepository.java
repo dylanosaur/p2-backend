@@ -1,4 +1,5 @@
-package com.revature.models;
+package com.revature.repositories;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import com.revature.models.User;
 
 /*
  * Spring Data provies a number of helpful repository types, with this hierarchy:
@@ -19,16 +22,9 @@ import org.springframework.stereotype.Repository;
  * 			full support of JPA features
  */
 @Repository
-public interface DoomRepository extends JpaRepository<User, Integer> {
-
-	void save(Item item);
+public interface UserRepository extends JpaRepository<User, Integer> {
 
 	User findByEmail(String email);
+	User findById(int id);
 
-	Optional<User> findById(int id);
-//
-//	@Query("FROM items i where i.user.id = :userid")
-//	List<Item> findAllByUser(@Param("userid") int userid);
-
-	// public List<User> findAllByWinner(String winner);
 }

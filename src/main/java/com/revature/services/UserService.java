@@ -1,24 +1,28 @@
 package com.revature.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import com.revature.models.DoomRepository;
 import com.revature.models.LoginRequest;
 import com.revature.models.User;
+import com.revature.repositories.UserRepository;
 
 @Service
-public class AuthenticationService {
+public class UserService {
 
 	
-	private DoomRepository doomDB;
+	private UserRepository doomDB;
 
 	@Autowired 
-	public AuthenticationService(DoomRepository doomDB) {
+
+	public UserService(UserRepository doomDB) {
 		super();
 		this.doomDB = doomDB;
 	}
+
 	
 	// sign-in
 	public User signIn(LoginRequest form) {
@@ -35,5 +39,11 @@ public class AuthenticationService {
 		return wasCreated;
 		
 	
+	}
+
+
+	public User findById(int id) {
+		User myUser = doomDB.findById(id);
+		return myUser;
 	}
 }

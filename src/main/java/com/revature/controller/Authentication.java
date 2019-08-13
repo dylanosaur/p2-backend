@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.LoginRequest;
 import com.revature.models.User;
-import com.revature.services.AuthenticationService;
+import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("users")
@@ -20,11 +20,11 @@ import com.revature.services.AuthenticationService;
 public class Authentication {
 
 	
-	private AuthenticationService service;
+	private UserService service;
 	
 	
 	@Autowired
-	public Authentication(AuthenticationService service) {
+	public Authentication(UserService service) {
 		super();
 		this.service = service;
 	}
