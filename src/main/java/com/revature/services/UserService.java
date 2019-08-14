@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 import com.revature.models.LoginRequest;
 import com.revature.models.User;
 import com.revature.repositories.UserRepository;
@@ -17,7 +20,6 @@ public class UserService {
 	private UserRepository doomDB;
 
 	@Autowired 
-
 	public UserService(UserRepository doomDB) {
 		super();
 		this.doomDB = doomDB;
@@ -25,10 +27,20 @@ public class UserService {
 
 	
 	// sign-in
-	public User signIn(LoginRequest form) {
+	public String signIn(LoginRequest form) {
 		//User myUser = new User(form.getEmail(), form.getPassword());
-		User myUser = this.doomDB.findByEmail(form.getEmail());
-		return myUser;
+		User myUser = this.doomDB.findByUsername(form.getUsername());
+		try {
+		    Algorithm algorithm = Algorithm.HMAC256("secret");
+		    String token = JWT.create()
+		        .withIssuer("auth0")
+		        .withClaim("userid", myUser.getId())
+		        .sign(algorithm);
+		    return token;
+		} catch (JWTCreationException exception){
+		    //Invalid Signing configuration / Couldn't convert Claims.
+		}
+		return "";
 	}
 
 	// sign-up

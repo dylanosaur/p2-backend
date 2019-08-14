@@ -21,6 +21,7 @@ public class Item {
 	private String name;
 	private BigDecimal price;
 	private String imgPath;
+	private String thumbnailPath;
 	private ClothingType type;
 	
 	@ManyToOne
@@ -59,6 +60,14 @@ public class Item {
 		this.imgPath = imgPath;
 	}
 
+	public String getThumbnailPath() {
+		return thumbnailPath;
+	}
+
+	public void setThumbnailPath(String thumbnailPath) {
+		this.thumbnailPath = thumbnailPath;
+	}
+
 	public ClothingType getType() {
 		return type;
 	}
@@ -83,6 +92,7 @@ public class Item {
 		result = prime * result + ((imgPath == null) ? 0 : imgPath.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + ((thumbnailPath == null) ? 0 : thumbnailPath.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -114,6 +124,11 @@ public class Item {
 				return false;
 		} else if (!price.equals(other.price))
 			return false;
+		if (thumbnailPath == null) {
+			if (other.thumbnailPath != null)
+				return false;
+		} else if (!thumbnailPath.equals(other.thumbnailPath))
+			return false;
 		if (type != other.type)
 			return false;
 		if (user == null) {
@@ -126,16 +141,18 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", imgPath=" + imgPath + ", type=" + type
-				+ ", user=" + user + "]";
+		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", imgPath=" + imgPath + ", thumbnailPath="
+				+ thumbnailPath + ", type=" + type + ", user=" + user + "]";
 	}
 
-	public Item(int id, String name, BigDecimal price, String imgPath, ClothingType type, User user) {
+	public Item(int id, String name, BigDecimal price, String imgPath, String thumbnailPath, ClothingType type,
+			User user) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.imgPath = imgPath;
+		this.thumbnailPath = thumbnailPath;
 		this.type = type;
 		this.user = user;
 	}
@@ -144,5 +161,5 @@ public class Item {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 }

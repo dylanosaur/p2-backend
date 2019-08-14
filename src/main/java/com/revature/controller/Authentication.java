@@ -1,5 +1,9 @@
 package com.revature.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.impl.JWTParser;
+import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.revature.models.JwtContainer;
 import com.revature.models.LoginRequest;
 import com.revature.models.User;
 import com.revature.services.UserService;
@@ -31,9 +40,9 @@ public class Authentication {
 
 
 	@PostMapping(path="/signin")
-	public User signIn(@RequestBody LoginRequest form) { 
-		User user = service.signIn(form);
-		return user;
+	public String signIn(@RequestBody LoginRequest form) { 
+		String myToken = service.signIn(form);
+		return myToken;
 	}
 	
 	@PostMapping(path="/signup")
@@ -43,6 +52,14 @@ public class Authentication {
 		return wasCreated;
 	}
 	
+	@PostMapping(path="/decode")
+	public Integer decodeMyToken(@RequestBody JwtContainer token) { 
+		String tokenString = token.getToken();
+		DecodedJWT decodedJwt = JWT.decode(tokenString);
+		Map<String, Claim> myClaims = decodedJwt.getClaims();
+		Integer myInt = myClaims.get("userid").asInt();
+		return myInt;
+	}
 	
 	
 	
