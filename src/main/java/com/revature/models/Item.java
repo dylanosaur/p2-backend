@@ -22,7 +22,7 @@ public class Item {
 	private BigDecimal price;
 	private String imgPath;
 	private String thumbnailPath;
-	private ClothingType type;
+	private String clothingType;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -68,12 +68,12 @@ public class Item {
 		this.thumbnailPath = thumbnailPath;
 	}
 
-	public ClothingType getType() {
-		return type;
+	public String getClothingType() {
+		return clothingType;
 	}
 
-	public void setType(ClothingType type) {
-		this.type = type;
+	public void setClothingType(String clothingType) {
+		this.clothingType = clothingType;
 	}
 
 	public User getUser() {
@@ -88,12 +88,12 @@ public class Item {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((clothingType == null) ? 0 : clothingType.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((imgPath == null) ? 0 : imgPath.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((thumbnailPath == null) ? 0 : thumbnailPath.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -107,6 +107,11 @@ public class Item {
 		if (getClass() != obj.getClass())
 			return false;
 		Item other = (Item) obj;
+		if (clothingType == null) {
+			if (other.clothingType != null)
+				return false;
+		} else if (!clothingType.equals(other.clothingType))
+			return false;
 		if (id != other.id)
 			return false;
 		if (imgPath == null) {
@@ -129,8 +134,6 @@ public class Item {
 				return false;
 		} else if (!thumbnailPath.equals(other.thumbnailPath))
 			return false;
-		if (type != other.type)
-			return false;
 		if (user == null) {
 			if (other.user != null)
 				return false;
@@ -142,10 +145,10 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", imgPath=" + imgPath + ", thumbnailPath="
-				+ thumbnailPath + ", type=" + type + ", user=" + user + "]";
+				+ thumbnailPath + ", clothingType=" + clothingType + ", user=" + user + "]";
 	}
 
-	public Item(int id, String name, BigDecimal price, String imgPath, String thumbnailPath, ClothingType type,
+	public Item(int id, String name, BigDecimal price, String imgPath, String thumbnailPath, String clothingType,
 			User user) {
 		super();
 		this.id = id;
@@ -153,7 +156,7 @@ public class Item {
 		this.price = price;
 		this.imgPath = imgPath;
 		this.thumbnailPath = thumbnailPath;
-		this.type = type;
+		this.clothingType = clothingType;
 		this.user = user;
 	}
 
@@ -161,5 +164,7 @@ public class Item {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
  
 }

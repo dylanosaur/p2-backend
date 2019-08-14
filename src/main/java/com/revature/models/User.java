@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Users")
@@ -29,6 +30,7 @@ public class User {
 	private String password;
 	private String name;
 	
+
 	@OneToMany(mappedBy="user")
 	private List<Item> cart;
 

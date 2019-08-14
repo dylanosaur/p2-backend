@@ -1,9 +1,12 @@
 package com.revature.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import com.revature.models.ClothingType;
 import com.revature.models.Item;
 import com.revature.models.User;
 import com.revature.repositories.ItemRepository;
@@ -27,6 +30,10 @@ public class ItemService {
 	public void addItem(Item item) {
 		doomDB.save(item);
 		return;
+	}
+
+	public List<Item> getAllItemsByType(String type) {
+		return doomDB.findAllByClothingType(type);
 	}
 
 }
