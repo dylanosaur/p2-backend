@@ -1,12 +1,16 @@
 package com.revature.controller;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +44,9 @@ public class Authentication {
 
 
 	@PostMapping(path="/signin")
-	public String signIn(@RequestBody LoginRequest form) { 
+	public String signIn(@RequestBody LoginRequest form, HttpServletResponse response) { 
 		String myToken = service.signIn(form);
+		response.setHeader("Authorization", myToken);
 		return myToken;
 	}
 	
