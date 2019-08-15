@@ -30,16 +30,15 @@ public class User {
 	private String password;
 	private String name;
 	
+	private String token;
+	
 
 	@OneToMany(mappedBy="user")
 	private List<Item> cart;
 
-	
-	public List<Item> addToCart(Item newItem) {
-		cart.add(newItem);
-		return cart;
+	public void addToCart(Item item) { 
+		this.cart.add(item);
 	}
-
 
 	public int getId() {
 		return id;
@@ -121,6 +120,16 @@ public class User {
 	}
 
 
+	public String getToken() {
+		return token;
+	}
+
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+
 	public List<Item> getCart() {
 		return cart;
 	}
@@ -143,6 +152,7 @@ public class User {
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((token == null) ? 0 : token.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -194,6 +204,11 @@ public class User {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (token == null) {
+			if (other.token != null)
+				return false;
+		} else if (!token.equals(other.token))
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -207,12 +222,12 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", creditCard=" + creditCard + ", email=" + email + ", password=" + password + ", name=" + name
-				+ ", cart=" + cart + "]";
+				+ ", token=" + token + ", cart=" + cart + "]";
 	}
 
 
 	public User(int id, String username, String firstName, String lastName, CreditCard creditCard, String email,
-			String password, String name, List<Item> cart) {
+			String password, String name, String token, List<Item> cart) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -222,6 +237,7 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.name = name;
+		this.token = token;
 		this.cart = cart;
 	}
 
@@ -230,6 +246,6 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	
 }

@@ -29,7 +29,7 @@ import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("users")
-@CrossOrigin(allowedHeaders = "*", methods = {RequestMethod.POST})
+@CrossOrigin(origins = "http://localhost:3000", methods = {RequestMethod.POST})
 public class Authentication {
 
 	
@@ -44,10 +44,9 @@ public class Authentication {
 
 
 	@PostMapping(path="/signin")
-	public String signIn(@RequestBody LoginRequest form, HttpServletResponse response) { 
-		String myToken = service.signIn(form);
-		response.setHeader("Authorization", myToken);
-		return myToken;
+	public User signIn(@RequestBody LoginRequest form, HttpServletResponse response) { 
+		User myUser = service.signIn(form, response);
+		return myUser;
 	}
 	
 	@PostMapping(path="/signup")
