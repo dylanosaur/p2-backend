@@ -36,4 +36,9 @@ public class ItemService {
 		return doomDB.findAllByClothingType(type);
 	}
 
+	public List<Item> getAllItems() {
+		return doomDB.findAll();
+	}
+
+
 }
