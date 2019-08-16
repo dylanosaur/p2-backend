@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.revature.models.ClothingType;
 import com.revature.models.Item;
 import com.revature.models.User;
 
@@ -15,6 +14,5 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
 	List<Item> findAllByUser(User user);
 
 	List<Item> findAllByClothingType(String type);
-
 
 }

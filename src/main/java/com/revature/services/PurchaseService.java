@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.CreditCard;
-import com.revature.models.Item;
 import com.revature.models.User;
 import com.revature.repositories.CreditCardRepository;
 

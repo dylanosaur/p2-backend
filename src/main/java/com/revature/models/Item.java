@@ -2,6 +2,7 @@ package com.revature.models;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +20,16 @@ public class Item {
 	private int id;
 
 	private String name;
+	
 	private BigDecimal price;
+	
+	@Column(name="img_path")
 	private String imgPath;
+	
+	@Column(name="thumbnail_path")
 	private String thumbnailPath;
+	
+	@Column(name="clothing_type")
 	private String clothingType;
 	
 	@ManyToOne

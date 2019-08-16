@@ -1,8 +1,6 @@
 package com.revature.controller;
 
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.revature.models.CreditCard;
-import com.revature.models.Item;
 import com.revature.models.User;
 import com.revature.services.PurchaseService;
 import com.revature.services.UserService;

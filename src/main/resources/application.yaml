@@ -7,10 +7,10 @@ spring:
   datasource:
     username: ${DB_USER}
     password: ${DB_PASSWORD}
-    url: ${DB_URL}
+    url: jdbc:${DB_URL}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     database: postgresql
 logging:
   level:

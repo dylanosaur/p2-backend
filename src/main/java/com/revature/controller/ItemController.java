@@ -3,6 +3,7 @@ package com.revature.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.models.ClothingType;
 import com.revature.models.Item;
 import com.revature.services.ItemService;
 
@@ -26,15 +26,22 @@ public class ItemController {
 		this.service = service;
 	}
 
+	@CrossOrigin
 	@GetMapping(path = "/{id}")
 	Item getItemById(@PathVariable int id) {
 		return service.getItemById(id);
 	}
+	
+	@CrossOrigin
+	@GetMapping(path = "/")
+	List<Item> getAllItems() {
+		return service.getAllItems();
+	}
 
 	@PostMapping(path = "/")
-	void postItem(@RequestBody Item item) {
+	public Item postItem(@RequestBody Item item) {
 		service.addItem(item);
-		return;
+		return item;
 	}
 	
 	@GetMapping(path="/type/{type}")
