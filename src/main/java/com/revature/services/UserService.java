@@ -1,5 +1,9 @@
 package com.revature.services;
 
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -25,20 +29,22 @@ public class UserService {
 
 	
 	// sign-in
-	public String signIn(LoginRequest form) {
+	public User signIn(LoginRequest form, HttpServletResponse response) {
 		//User myUser = new User(form.getEmail(), form.getPassword());
 		User myUser = this.doomDB.findByUsername(form.getUsername());
 		try {
-		    Algorithm algorithm = Algorithm.HMAC256("secret");
+		    Algorithm algorithm = Algorithm.HMAC256("bruce-wayne-is-batman");
 		    String token = JWT.create()
 		        .withIssuer("auth0")
 		        .withClaim("userid", myUser.getId())
 		        .sign(algorithm);
-		    return token;
+		    // add token to header
+			myUser.setToken(token);
+		    //return token;
 		} catch (JWTCreationException exception){
 		    //Invalid Signing configuration / Couldn't convert Claims.
 		}
-		return "";
+		return myUser;
 	}
 
 	// sign-up
