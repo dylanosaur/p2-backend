@@ -70,6 +70,20 @@ public class UserService {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	public User updateUser(User userUpdates) {
+		User myUser = doomDB.findById(userUpdates.getId());
+		myUser.setEmail(userUpdates.getEmail());
+		myUser.setFirstName(userUpdates.getFirstName());
+		myUser.setLastName(userUpdates.getLastName());
+		myUser.setUsername(userUpdates.getUsername());
+		myUser.setPassword(myUser.getPassword());
+		myUser.setCreditCard(userUpdates.getCreditCard());
+		
+		User updatedUser = doomDB.save(myUser);
+		return updatedUser;
+	}
 	
 	
 }

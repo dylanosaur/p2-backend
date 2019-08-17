@@ -65,8 +65,11 @@ public class Authentication {
 	@PutMapping(path="/userinfo")
 	public User updateUser(@RequestBody User userUpdates, @RequestHeader(value="Authorization") String myToken)  {
 		System.out.println(myToken);
+		int userid = JWT.decode(myToken).getClaims().get("userid").asInt();
+		userUpdates.setId(userid);
 		System.out.println(userUpdates);
-		return userUpdates;
+		User updatedUser = service.updateUser(userUpdates);
+		return updatedUser; 
 	}
 	
 	
