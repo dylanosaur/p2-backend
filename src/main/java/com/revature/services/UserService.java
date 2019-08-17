@@ -78,10 +78,9 @@ public class UserService {
 		myUser.setFirstName(userUpdates.getFirstName());
 		myUser.setLastName(userUpdates.getLastName());
 		myUser.setUsername(userUpdates.getUsername());
-		myUser.setPassword(myUser.getPassword());
-		myUser.setCreditCard(userUpdates.getCreditCard());
-		
-		User updatedUser = doomDB.save(myUser);
+		myUser.setPassword(userUpdates.getPassword());
+		//myUser.setCreditCard(userUpdates.getCreditCard());
+		User updatedUser = doomDB.saveAndFlush(myUser);
 		return updatedUser;
 	}
 	
