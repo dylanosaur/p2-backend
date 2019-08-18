@@ -61,12 +61,12 @@ public class PurchaseController {
 		return;
 	}
 	
-	@GetMapping(path="/creditcard/userid/{id}")
-	CreditCard getCreditCard(@PathVariable int id) { 
-		User owner = userService.findById(id);
-		return service.getCreditCardByUser(owner);
-		
-	}
+//	@GetMapping(path="/creditcard/userid/{id}")
+//	CreditCard getCreditCard(@PathVariable int id) { 
+//		User owner = userService.findById(id);
+//		return service.getCreditCardByUser(owner);
+//		
+//	}
 	
 
 	@ExceptionHandler(HttpClientErrorException.class)

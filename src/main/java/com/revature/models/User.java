@@ -22,130 +22,84 @@ public class User {
 	private String username;
 	private String firstName;
 	private String lastName;
-	
-	@OneToOne(targetEntity=CreditCard.class)
-	private CreditCard creditCard;
+//	
+//	@OneToOne(targetEntity=CreditCard.class)
+//	private CreditCard creditCard;
 	
 	private String email;
 	private String password;
 	private String name;
 	
 	private String token;
-	
-
-	@OneToMany(mappedBy="user")
-	private List<Item> cart;
-
-	public void addToCart(Item item) { 
-		this.cart.add(item);
-	}
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 
 	public String getLastName() {
 		return lastName;
 	}
 
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-
-	public CreditCard getCreditCard() {
-		return creditCard;
-	}
-
-
-	public void setCreditCard(CreditCard creditCard) {
-		this.creditCard = creditCard;
-	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getToken() {
 		return token;
 	}
 
-
 	public void setToken(String token) {
 		this.token = token;
 	}
-
-
-	public List<Item> getCart() {
-		return cart;
-	}
-
-
-	public void setCart(List<Item> cart) {
-		this.cart = cart;
-	}
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cart == null) ? 0 : cart.hashCode());
-		result = prime * result + ((creditCard == null) ? 0 : creditCard.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + id;
@@ -157,7 +111,6 @@ public class User {
 		return result;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -167,16 +120,6 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (cart == null) {
-			if (other.cart != null)
-				return false;
-		} else if (!cart.equals(other.cart))
-			return false;
-		if (creditCard == null) {
-			if (other.creditCard != null)
-				return false;
-		} else if (!creditCard.equals(other.creditCard))
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -217,35 +160,30 @@ public class User {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", creditCard=" + creditCard + ", email=" + email + ", password=" + password + ", name=" + name
-				+ ", token=" + token + ", cart=" + cart + "]";
+				+ ", email=" + email + ", password=" + password + ", name=" + name + ", token=" + token + "]";
 	}
 
-
-	public User(int id, String username, String firstName, String lastName, CreditCard creditCard, String email,
-			String password, String name, String token, List<Item> cart) {
+	public User(int id, String username, String firstName, String lastName, String email, String password, String name,
+			String token) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.creditCard = creditCard;
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.token = token;
-		this.cart = cart;
 	}
-
 
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	
 }

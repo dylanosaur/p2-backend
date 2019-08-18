@@ -21,7 +21,9 @@ import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.revature.models.JwtContainer;
 import com.revature.models.LoginRequest;
+import com.revature.models.SignInResponse;
 import com.revature.models.User;
+import com.revature.models.UserUpdates;
 import com.revature.services.UserService;
 
 @RestController
@@ -41,9 +43,9 @@ public class Authentication {
 
 
 	@PostMapping(path="/signin")
-	public User signIn(@RequestBody LoginRequest form, HttpServletResponse response) { 
-		User myUser = service.signIn(form, response);
-		return myUser;
+	public SignInResponse signIn(@RequestBody LoginRequest form, HttpServletResponse response) { 
+		SignInResponse res = service.signIn(form, response);
+		return res;
 	}
 	
 	@PostMapping(path="/signup")
@@ -63,13 +65,14 @@ public class Authentication {
 	}
 	
 	@PutMapping(path="/userinfo")
-	public User updateUser(@RequestBody User userUpdates, @RequestHeader(value="Authorization") String myToken)  {
+	public SignInResponse updateUser(@RequestBody UserUpdates userUpdates, @RequestHeader(value="Authorization") String myToken)  {
 		System.out.println(myToken);
 		int userid = JWT.decode(myToken).getClaims().get("userid").asInt();
-		userUpdates.setId(userid);
+		User myUser = userUpdates.getUser();
+		myUser.setId(userid);
 		System.out.println(userUpdates);
-		User updatedUser = service.updateUser(userUpdates);
-		return updatedUser; 
+		SignInResponse myResponse = service.updateUser(userUpdates);
+		return myResponse; 
 	}
 	
 	

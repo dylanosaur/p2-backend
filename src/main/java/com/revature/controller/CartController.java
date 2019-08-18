@@ -37,28 +37,28 @@ public class CartController {
 		this.userService = userService;
 	}
 
-	
-	// add item to cart
-	@PostMapping(path="/{userid}/item/{itemid}")
-	public void addItemToCart(@PathVariable int userid, @PathVariable int itemid) { 
-		User owner = userService.findById(userid);
-		System.out.println(owner);
-		Item newItem = service.findById(itemid);
-		owner.addToCart(newItem);
-		System.out.println(owner.getCart());
-		userService.save(owner);
-		System.out.println(owner);
-	}
-	
-	// get cart
-	@GetMapping(path="/{userid}")
-	public List<Item> getCart(@PathVariable int userid) {
-		User owner = userService.findById(userid);
-		System.out.println(owner);
-		return owner.getCart();
-	}
-
-	
+//	
+//	// add item to cart
+//	@PostMapping(path="/{userid}/item/{itemid}")
+//	public void addItemToCart(@PathVariable int userid, @PathVariable int itemid) { 
+//		User owner = userService.findById(userid);
+//		System.out.println(owner);
+//		Item newItem = service.findById(itemid);
+//		owner.addToCart(newItem);
+//		System.out.println(owner.getCart());
+//		userService.save(owner);
+//		System.out.println(owner);
+//	}
+//	
+//	// get cart
+//	@GetMapping(path="/{userid}")
+//	public List<Item> getCart(@PathVariable int userid) {
+//		User owner = userService.findById(userid);
+//		System.out.println(owner);
+//		return owner.getCart();
+//	}
+//
+//	
 	
 	// remove item from cart
 	

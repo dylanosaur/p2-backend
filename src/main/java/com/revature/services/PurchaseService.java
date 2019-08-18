@@ -27,11 +27,11 @@ public class PurchaseService {
 		
 	}
 
-
-
-	public CreditCard getCreditCardByUser(User owner) {
-		return doomDB.findByUser(owner);
-	}
+//
+//
+//	public CreditCard getCreditCardByUser(User owner) {
+//		//return doomDB.findByUser(owner);
+//	}
 
 
 }

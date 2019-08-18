@@ -22,9 +22,7 @@ public class CreditCard {
 	private String type;
 	private String expiration;
 	
-	@OneToOne
-	@JoinColumn(name="id")
-	private User user;
+	private int userid;
 
 	public int getId() {
 		return id;
@@ -74,12 +72,12 @@ public class CreditCard {
 		this.expiration = expiration;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUserid() {
+		return userid;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
 	@Override
@@ -92,7 +90,7 @@ public class CreditCard {
 		result = prime * result + ((number == null) ? 0 : number.hashCode());
 		result = prime * result + ((securityCode == null) ? 0 : securityCode.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + userid;
 		return result;
 	}
 
@@ -132,10 +130,7 @@ public class CreditCard {
 				return false;
 		} else if (!type.equals(other.type))
 			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
+		if (userid != other.userid)
 			return false;
 		return true;
 	}
@@ -143,11 +138,11 @@ public class CreditCard {
 	@Override
 	public String toString() {
 		return "CreditCard [id=" + id + ", address=" + address + ", number=" + number + ", securityCode=" + securityCode
-				+ ", type=" + type + ", expiration=" + expiration + ", user=" + user + "]";
+				+ ", type=" + type + ", expiration=" + expiration + ", userid=" + userid + "]";
 	}
 
 	public CreditCard(int id, String address, String number, String securityCode, String type, String expiration,
-			User user) {
+			int userid) {
 		super();
 		this.id = id;
 		this.address = address;
@@ -155,7 +150,7 @@ public class CreditCard {
 		this.securityCode = securityCode;
 		this.type = type;
 		this.expiration = expiration;
-		this.user = user;
+		this.userid = userid;
 	}
 
 	public CreditCard() {

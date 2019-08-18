@@ -10,7 +10,7 @@ spring:
     url: ${DB_URL}
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     database: postgresql
 logging:
   level:
